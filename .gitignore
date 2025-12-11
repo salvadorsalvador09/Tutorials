@@ -35,3 +35,13 @@ fastlane/Preview.html
 # Keystores (IMPORTANT: do NOT expose them!)
 *.jks
 *.keystore
+
+
+# Resumen súper corto
+ #Qué quieres saber	Comando
+ #Si tu carpeta local tiene cambios	git status
+ #Si estás igual que el remoto	git fetch + git status
+ #Si tienes commits sin subir	git log origin/master..master
+ #Si el remoto tiene commits nuevos	git log master..origin/master
+ #Si archivos difieren entre local y remoto	git diff master origin/master
+#
