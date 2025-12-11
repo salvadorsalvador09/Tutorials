@@ -1,0 +1,37 @@
+# Gradle
+.gradle/
+build/
+*/build/
+
+# Local config
+local.properties
+
+# IntelliJ / Android Studio
+*.iml
+.idea/
+!.idea/codeStyles/
+!.idea/runConfigurations/
+
+# macOS
+.DS_Store
+
+# NDK / CMake
+externalNativeBuild/
+.cxx/
+
+# Captures
+captures/
+
+# Logs
+*.log
+
+# Gradle Wrapper files to KEEP
+!gradle-wrapper.jar
+
+# Ignore fastlane metadata
+fastlane/report.xml
+fastlane/Preview.html
+
+# Keystores (IMPORTANT: do NOT expose them!)
+*.jks
+*.keystore
