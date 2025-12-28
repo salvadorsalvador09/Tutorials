@@ -75,6 +75,7 @@ fun SampleCard(title: String, subtitle: String) {
             )
             Text(
                 text = title,
+
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 25.dp)
