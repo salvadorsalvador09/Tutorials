@@ -6,54 +6,29 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tutorials.ui.theme.TutorialsTheme
-import kotlin.collections.forEachIndexed
-import kotlin.collections.lastIndex
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.sp
 
 
@@ -67,7 +42,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    SampleCard()
+                    SampleCard("Dragon Azul", "Tecnica Origami")
                 }
             }
 
@@ -75,27 +50,41 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-fun Modifier.sectionPadding(): Modifier =
-    this.padding(horizontal = Dimens.screenPadding, vertical = Dimens.sectionVertical)
 
 @Composable
 fun SampleCard(title: String, subtitle: String) {
-    Card {
-        Column {
+    ElevatedCard(
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 10.dp
+        ),
+        shape = CutCornerShape(150.dp),
+        modifier = Modifier
+            .width(300.dp)
+            .height(300.dp)
+    ) {
+        Box (
+            contentAlignment = Alignment.Center
+        ){
+            Image(
+                painter = painterResource(R.drawable.dragon),
+                contentDescription =  title,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(),
+                contentScale = ContentScale.Crop
+            )
             Text(
                 text = title,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(Dimens.cardPadding)
+                modifier = Modifier.padding(bottom = 25.dp)
+                    .background(Color(114, 138, 178, 150))
             )
             Text(
                 text = subtitle,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(Dimens.cardPadding)
-            )
-            Image(
-                painter = painterResource(R.drawable.dragon)
+                modifier = Modifier.padding(start = 10.dp, top = 5.dp)
             )
 
         }
@@ -111,7 +100,7 @@ fun SampleCard(title: String, subtitle: String) {
 fun PreviewMunicipioScreen() {
     MaterialTheme {
         Surface(modifier = Modifier.fillMaxSize()) {
-            MunicipioScreen()
+            SampleCard("Dragon Azul", "Tecnica Origami")
         }
     }
 }
@@ -119,7 +108,7 @@ fun PreviewMunicipioScreen() {
 @Preview(name = "Font 1.3x", fontScale = 1.3f, showBackground = true)
 @Composable
 fun PreviewFontScale() {
-    TutorialsTheme { MunicipioScreen() }
+    TutorialsTheme { SampleCard("Dragon Azul", "Tecnica Origami")}
 }
 
 @Preview(
@@ -129,7 +118,13 @@ fun PreviewFontScale() {
 )
 @Composable
 fun PreviewDark() {
-    TutorialsTheme { MunicipioScreen() }
+    TutorialsTheme { SampleCard("Dragon Azul", "Tecnica Origami") }
+}
+@Preview
+@Composable
+fun Preview()
+{
+    SampleCard("Dragon Azul", "Tecnica Origami")
 }
 
 
