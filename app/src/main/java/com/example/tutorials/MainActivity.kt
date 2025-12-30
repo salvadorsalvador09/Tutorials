@@ -13,7 +13,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 
 import androidx.compose.material3.CardDefaults
@@ -32,6 +35,7 @@ import com.example.tutorials.ui.theme.TutorialsTheme
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tutorials.data.DataSource
 import com.example.tutorials.model.PlaceToVisit
 
 
@@ -42,16 +46,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             TutorialsTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    PlaceCard(
-                        PlaceToVisit(
-                            R.string.place1, R.drawable.image1, R.string.country_mx,
-                            R.string.weather_tempered, R.string.lenguage_es, R.string.description1
-                        )
-                    )
-                }
+                    content = {
+                        PlaceList(placeList = DataSource().loadPlaces())
+                    }
+                )
             }
 
         }
@@ -69,7 +67,7 @@ fun PlaceCard(place: PlaceToVisit, modifier: Modifier = Modifier) {
         )
     ) {
         Row {
-            Box{
+            Box {
                 Image(
                     painter = painterResource(place.imageResourceId),
                     contentDescription = stringResource(place.nameResourceId),
@@ -79,57 +77,91 @@ fun PlaceCard(place: PlaceToVisit, modifier: Modifier = Modifier) {
                     contentScale = ContentScale.Crop
                 )
                 Row(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalAlignment = Alignment.Top
+                ) {
+                    Box {
+                        Image(
+                            painter = painterResource(place.imageResourceId),
+                            contentDescription = stringResource(place.nameResourceId),
+                            modifier = Modifier
+                                .width(200.dp)
+                                .height(200.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                        Row(
                             modifier = Modifier
                                 .padding(top = 12.dp)
-                                .background(color =  Color(240, 191, 31)),
-                    )
-                {
-                    Text(
-                        text = stringResource(place.weatherResourceId),
-                        fontSize = 15.sp,
+                                .background(Color(240, 191, 31)),
+                        ) {
+                            Text(
+                                text = stringResource(place.weatherResourceId),
+                                fontSize = 15.sp,
+                                modifier = Modifier.padding(
+                                    start = 10.dp,
+                                    top = 6.dp,
+                                    bottom = 6.dp,
+                                    end = 12.dp
+                                )
+                            )
+                        }
+                        Image(
+                            painter = painterResource(R.drawable.heart),
+                            contentDescription = stringResource(R.string.info),
+                            modifier = Modifier
+                                .width(50.dp)
+                                .height(50.dp)
+                                .align(Alignment.BottomEnd)
+                                .padding(10.dp),
+                            contentScale = ContentScale.Fit
+                        )
+                    }
+
+                    Column(
                         modifier = Modifier
-                            .padding(start = 10.dp, top = 6.dp, bottom = 6.dp, end = 12.dp)
+                            .weight(1f)          // <-- CLAVE: deja espacio al icono de la derecha
+                            .padding(start = 8.dp)
+                    ) {
+                        Text(
+                            text = stringResource(place.nameResourceId),
+                            fontSize = 30.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(16.dp)
+                        )
+                        Text(
+                            text = stringResource(place.countryResourceId),
+                            fontSize = 26.sp,
+                            modifier = Modifier.padding(10.dp)
+                        )
+                        Text(
+                            text = stringResource(place.languageResourceId),
+                            fontSize = 36.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(10.dp)
+                        )
+                    }
+
+                    Image(
+                        painter = painterResource(R.drawable.info),
+                        contentDescription = stringResource(R.string.info),
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .size(20.dp)          // más limpio que width+height
+                            .align(Alignment.Top), // opcional
+                        contentScale = ContentScale.Fit
                     )
                 }
-                Image(
-                    painter = painterResource(R.drawable.heart),
-                    contentDescription = stringResource(R.string.info),
-                    modifier = Modifier
-                        .width(50.dp)
-                        .height(50.dp)
-                        .align(Alignment.BottomEnd)
-                        .padding(10.dp),
-                    contentScale = ContentScale.Fit
-                )
             }
-            Column {
-                Text(
-                    text = stringResource(place.nameResourceId),
-                    fontSize = 30.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier
-                        .padding(16.dp)
-                )
-                Text(
-                    text = stringResource(place.countryResourceId),
-                    fontSize = 26.sp,
-                    modifier = modifier.padding(10.dp)
-                )
-                Text(
-                    text = stringResource(place.languageResourceId),
-                    fontSize = 36.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = modifier.padding(10.dp)
-                )
-            }
-            Image(
-                painter = painterResource(R.drawable.info),
-                contentDescription = stringResource(R.string.info),
-                modifier = Modifier
-                    .width(40.dp)
-                    .height(40.dp),
-                contentScale = ContentScale.Fit
-            )
+        }
+    }
+}
+
+@Composable
+private fun PlaceList(placeList: List<PlaceToVisit>, modifier: Modifier = Modifier)
+{
+    LazyColumn {
+        items(placeList){
+            place -> PlaceCard(place = place)
         }
     }
 }
@@ -141,13 +173,7 @@ fun PlaceCard(place: PlaceToVisit, modifier: Modifier = Modifier) {
 @Composable
 fun PreviewMunicipioScreen() {
     MaterialTheme {
-        PlaceCard(
-            PlaceToVisit(
-                R.string.place1, R.drawable.image1, R.string.country_mx,
-                R.string.weather_tempered, R.string.lenguage_es, R.string.description1
-            )
-        )
-
+        PlaceList(placeList = DataSource().loadPlaces())
     }
 }
 
@@ -155,12 +181,7 @@ fun PreviewMunicipioScreen() {
 @Composable
 fun PreviewFontScale() {
     TutorialsTheme {
-        PlaceCard(
-            PlaceToVisit(
-                R.string.place1, R.drawable.image1, R.string.country_mx,
-                R.string.weather_tempered, R.string.lenguage_es, R.string.description1
-            )
-        )
+        PlaceList(placeList = DataSource().loadPlaces())
     }
 }
 
@@ -168,10 +189,7 @@ fun PreviewFontScale() {
 @Composable
 fun Preview() {
     TutorialsTheme {
-        PlaceToVisit(
-            R.string.place1, R.drawable.image1, R.string.country_mx,
-            R.string.weather_tempered, R.string.lenguage_es, R.string.description1
-        )
+        PlaceList(placeList = DataSource().loadPlaces())
     }
 }
 
@@ -183,12 +201,7 @@ fun Preview() {
 @Composable
 fun PreviewDark() {
     TutorialsTheme {
-        PlaceCard(
-            PlaceToVisit(
-                R.string.place1, R.drawable.image1, R.string.country_mx,
-                R.string.weather_tempered, R.string.lenguage_es, R.string.description1
-            )
-        )
+        PlaceList(placeList = DataSource().loadPlaces())
     }
 }
 
