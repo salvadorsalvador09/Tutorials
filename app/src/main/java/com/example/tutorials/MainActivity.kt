@@ -18,11 +18,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -46,11 +51,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TutorialsTheme {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center,
+                Surface(
                     content = {
-                        PlaceList(placeList = DataSource().loadPlaces())
+                        PlaceGrid(placeList = DataSource().loadPlaces(), modifier = Modifier.width(100.dp))
                     }
                 )
             }
@@ -58,102 +61,88 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 @Composable
 fun PlaceCard(place: PlaceToVisit, modifier: Modifier = Modifier) {
     Card(
-        modifier = modifier
-            .padding(8.dp)
-            .fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        modifier = modifier.padding(8.dp),
+        elevation = CardDefaults.cardElevation( defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White,
-            contentColor = Color.DarkGray
+            containerColor = Color.White, //Card background color
+            contentColor = Color.DarkGray  //Card content color,e.g.text
         )
     ) {
-        Column {
-            Row(
-                modifier = Modifier.fillMaxWidth()
+        Box {
+            Image(
+                painter = painterResource(place.imageResourceId),
+                contentDescription = stringResource(place.nameResourceId),
+                modifier = Modifier
+                    .width(200.dp)
+                    .height(200.dp)
+                    .align(Alignment.Center),
+                contentScale = ContentScale.Crop
+            )
+            Row (
+                Modifier
+                    .padding(top = 12.dp)
+                    .background(color= Color(14, 177, 210))
+                    .width(120.dp)
             ) {
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-                ) {
-                    Text(
-                        text = stringResource(place.nameResourceId),
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(start = 10.dp, top = 5.dp)
-                    )
-                    Text(
-                        text = stringResource(place.countryResourceId),
-                        fontSize = 18.sp,
-                        modifier = Modifier.padding(start = 10.dp, bottom = 5.dp)
-                    )
-                }
-
                 Text(
-                    text = stringResource(place.languageResourceId),
-                    fontSize = 30.sp,
+                    text = stringResource(place.nameResourceId),
+                    fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(10.dp)
+                    modifier = Modifier
+                        .padding(start = 12.dp, top = 6.dp, bottom = 6.dp, end = 12.dp)
                 )
             }
-            Box(
-                modifier = Modifier.fillMaxWidth()
+            Row (
+                Modifier
+                    .padding(top = 42.dp)
+                    .background(color= Color(79, 93, 117))
+                    .width(120.dp)
             ) {
-                Image(
-                    painter = painterResource(place.imageResourceId),
-                    contentDescription = stringResource(place.nameResourceId),
+                Text(
+                    text = stringResource(place.countryResourceId),
+                    color = Color.White,
+                    fontSize = 15.sp,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(300.dp),
-                    contentScale = ContentScale.Crop
-                )
-
-                Row(
-                    modifier = Modifier
-                        .align(Alignment.BottomStart)
-                        .padding(bottom = 12.dp)
-                        .background(color = Color(0xFFF0BF1F)) // mismo color
-                ) {
-                    Text(
-                        text = stringResource(place.weatherResourceId),
-                        fontSize = 15.sp,
-                        modifier = Modifier.padding(
-                            start = 12.dp,
-                            top = 6.dp,
-                            bottom = 6.dp,
-                            end = 12.dp
-                        )
-                    )
-                }
-
-                Image(
-                    painter = painterResource(R.drawable.heart),
-                    contentDescription = stringResource(R.string.favorite),
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .padding(10.dp)
-                        .size(50.dp),
-                    contentScale = ContentScale.Fit
+                        .padding(start = 12.dp, top = 6.dp, bottom = 6.dp, end =
+                            12.dp)
                 )
             }
-            Text(
-                text = stringResource(place.descriptionResourceId),
-                fontSize = 12.sp,
-                modifier = Modifier.padding(16.dp)
+            Image(
+                painter = painterResource(R.drawable.heart),
+                contentDescription = stringResource(R.string.favorite),
+                modifier = Modifier
+                    .width(50.dp)
+                    .height(50.dp)
+                    .align(Alignment.BottomEnd)
+                    .padding(10.dp),
+                contentScale = ContentScale.Fit
+            )
+            Image(
+                painter = painterResource(R.drawable.info),
+                contentDescription = stringResource(R.string.info),
+                modifier = Modifier
+                    .width(60.dp)
+                    .height(60.dp)
+                    .align(Alignment.TopEnd)
+                    .padding(10.dp),
+                contentScale = ContentScale.Fit
             )
         }
     }
 }
 
 
-
 @Composable
-private fun PlaceList(placeList: List<PlaceToVisit>, modifier: Modifier = Modifier) {
-    LazyRow {
-        items(placeList) { place ->
-            PlaceCard(place, Modifier.width(320.dp))
+private fun PlaceGrid(placeList: List<PlaceToVisit>, modifier: Modifier = Modifier) {
+    LazyHorizontalGrid(
+        rows = GridCells.Adaptive(minSize = 100.dp)
+    ) {
+        items(placeList) {
+            place -> PlaceCard(place = place)
         }
     }
 }
@@ -163,9 +152,9 @@ private fun PlaceList(placeList: List<PlaceToVisit>, modifier: Modifier = Modifi
 @Preview(name = "Small", device = "spec:width=360dp,height=640dp,dpi=420", showBackground = true)
 @Preview(name = "Tablet", device = "spec:width=1280dp,height=800dp,dpi=240", showBackground = true)
 @Composable
-fun PreviewMunicipioScreen() {
+fun PreviewDifferentScreen() {
     MaterialTheme {
-        PlaceList(placeList = DataSource().loadPlaces(), modifier = Modifier.width(320.dp))
+        PlaceGrid(placeList = DataSource().loadPlaces(), modifier = Modifier.width(100.dp))
     }
 }
 
@@ -173,7 +162,7 @@ fun PreviewMunicipioScreen() {
 @Composable
 fun PreviewFontScale() {
     TutorialsTheme {
-        PlaceList(placeList = DataSource().loadPlaces(), modifier = Modifier.width(320.dp))
+        PlaceGrid(placeList = DataSource().loadPlaces(), modifier = Modifier.width(100.dp))
     }
 }
 
@@ -181,7 +170,7 @@ fun PreviewFontScale() {
 @Composable
 fun Preview() {
     TutorialsTheme {
-        PlaceList(placeList = DataSource().loadPlaces(), modifier = Modifier.width(320.dp))
+        PlaceGrid(placeList = DataSource().loadPlaces(), modifier = Modifier.width(320.dp))
     }
 }
 
@@ -193,7 +182,7 @@ fun Preview() {
 @Composable
 fun PreviewDark() {
     TutorialsTheme {
-        PlaceList(placeList = DataSource().loadPlaces())
+        PlaceGrid(placeList = DataSource().loadPlaces())
     }
 }
 
