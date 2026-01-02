@@ -4,35 +4,25 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowRight
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.tutorials.ui.theme.TutorialsTheme
-import kotlinx.coroutines.launch
+import androidx.compose.ui.unit.dp
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,77 +31,80 @@ class MainActivity : ComponentActivity() {
         setContent {
             TutorialsTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    HorizontalExample()
-                }
-
-            }
-        }
-    }
-}
-
-@Composable
-fun HorizontalExample(modifier: Modifier = Modifier) {
-    val colorList = listOf(Color.Red, Color.Green, Color.Blue, Color.Cyan, Color.Magenta)
-    val pageState = rememberPagerState {
-        colorList.size
-    }
-    val coroutineScope = rememberCoroutineScope()
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-        HorizontalPager(state = pageState) {
-            Box(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
-                    .background(colorList[it]),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "Page: $it",
-                    color = Color.White,
-                    fontSize = 28.sp,
-                    fontWeight = FontWeight.Bold
+                    content = {
+                        StraggeredGrid()
+                    }
                 )
             }
-        }
-        Row {
-            Icon(
-                imageVector = Icons.Filled.KeyboardArrowLeft,
-                contentDescription = "Previous Page",
-                modifier = Modifier
-                    .size(75.dp)
-                    .clickable{
-                        coroutineScope.launch {
-                            pageState.animateScrollToPage(pageState.currentPage -1)
-                        }
-                    }
 
-            )
-            Icon(
-                imageVector = Icons.Filled.KeyboardArrowRight,
-                contentDescription = "Previous Page",
-                modifier = Modifier
-                    .size(75.dp)
-                    .clickable{
-                        coroutineScope.launch {
-                            pageState.animateScrollToPage(pageState.currentPage +1)
-                        }
-                    }
-            )
         }
     }
 }
 
-
-@Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    TutorialsTheme {
-        HorizontalExample()
+fun ImageItem(id: Int, description: String, modifier: Modifier = Modifier) {
+    Card(
+        modifier = modifier.padding(8.dp),
+        elevation = CardDefaults.cardElevation( defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White, //Card background color
+            contentColor = Color.DarkGray  //Card content color,e.g.text
+        )
+    ) {
+        Box{
+            Image(
+                painter =  painterResource(id),
+                contentDescription = description,
+                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.Crop
+            )
+        }
     }
 }
+
+
+
+
+@Composable
+private fun StraggeredGrid()
+{
+    val images= intArrayOf(R.drawable.butterfly, R.drawable.cat, R.drawable.crane,
+        R.drawable.dog, R.drawable.elephant, R.drawable.fish, R.drawable.fox,
+        R.drawable.fox, R.drawable.frog, R.drawable.horse, R.drawable.owl,
+        R.drawable.owl, R.drawable.rabbit, R.drawable.whale, R.drawable.butterfly,
+        R.drawable.fox, R.drawable.frog, R.drawable.horse
+        )
+    val description = arrayOf(
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+    )
+    LazyVerticalStaggeredGrid(
+        columns = StaggeredGridCells.Fixed(3),
+        verticalItemSpacing = 4.dp
+    ) {
+        items(images.size){
+            index-> ImageItem(images[index], description[index])
+        }
+    }
+}
+
+
+
+
+@Preview
+@Composable
+fun StageredgridPreviewPreview() {
+    TutorialsTheme {
+        StraggeredGrid()
+    }
+}
+
+
+
+
