@@ -23,6 +23,8 @@ import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.material3.Card
 
 import androidx.compose.material3.CardDefaults
@@ -53,7 +55,6 @@ class MainActivity : ComponentActivity() {
             TutorialsTheme {
                 Surface(
                     content = {
-                        PlaceGrid(placeList = DataSource().loadPlaces(), modifier = Modifier.width(100.dp))
                     }
                 )
             }
@@ -63,7 +64,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun PlaceCard(place: PlaceToVisit, modifier: Modifier = Modifier) {
+fun ImageItem(id: Int, description: String, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier.padding(8.dp),
         elevation = CardDefaults.cardElevation( defaultElevation = 4.dp),
@@ -72,119 +73,60 @@ fun PlaceCard(place: PlaceToVisit, modifier: Modifier = Modifier) {
             contentColor = Color.DarkGray  //Card content color,e.g.text
         )
     ) {
-        Box {
+        Box{
             Image(
-                painter = painterResource(place.imageResourceId),
-                contentDescription = stringResource(place.nameResourceId),
-                modifier = Modifier
-                    .width(200.dp)
-                    .height(200.dp)
-                    .align(Alignment.Center),
+                painter =  painterResource(id),
+                contentDescription = description,
+                modifier = Modifier.fillMaxWidth(),
                 contentScale = ContentScale.Crop
             )
-            Row (
-                Modifier
-                    .padding(top = 12.dp)
-                    .background(color= Color(14, 177, 210))
-                    .width(120.dp)
-            ) {
-                Text(
-                    text = stringResource(place.nameResourceId),
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier
-                        .padding(start = 12.dp, top = 6.dp, bottom = 6.dp, end = 12.dp)
-                )
-            }
-            Row (
-                Modifier
-                    .padding(top = 42.dp)
-                    .background(color= Color(79, 93, 117))
-                    .width(120.dp)
-            ) {
-                Text(
-                    text = stringResource(place.countryResourceId),
-                    color = Color.White,
-                    fontSize = 15.sp,
-                    modifier = Modifier
-                        .padding(start = 12.dp, top = 6.dp, bottom = 6.dp, end =
-                            12.dp)
-                )
-            }
-            Image(
-                painter = painterResource(R.drawable.heart),
-                contentDescription = stringResource(R.string.favorite),
-                modifier = Modifier
-                    .width(50.dp)
-                    .height(50.dp)
-                    .align(Alignment.BottomEnd)
-                    .padding(10.dp),
-                contentScale = ContentScale.Fit
-            )
-            Image(
-                painter = painterResource(R.drawable.info),
-                contentDescription = stringResource(R.string.info),
-                modifier = Modifier
-                    .width(60.dp)
-                    .height(60.dp)
-                    .align(Alignment.TopEnd)
-                    .padding(10.dp),
-                contentScale = ContentScale.Fit
-            )
         }
     }
 }
 
 
+
+
 @Composable
-private fun PlaceGrid(placeList: List<PlaceToVisit>, modifier: Modifier = Modifier) {
-    LazyHorizontalGrid(
-        rows = GridCells.Adaptive(minSize = 100.dp)
+private fun StraggeredGrid()
+{
+    val images= intArrayOf(R.drawable.butterfly, R.drawable.cat, R.drawable.crane,
+        R.drawable.dog, R.drawable.elephant, R.drawable.fish, R.drawable.fox,
+        R.drawable.fox, R.drawable.frog, R.drawable.horse, R.drawable.owl,
+        R.drawable.owl, R.drawable.rabbit, R.drawable.whale, R.drawable.butterfly,
+        R.drawable.fox, R.drawable.frog, R.drawable.horse
+        )
+    val description = arrayOf(
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+        stringResource(R.string.butterfly), stringResource(R.string.cat),
+    )
+    LazyVerticalStaggeredGrid(
+        columns = StaggeredGridCells.Fixed(3),
+        verticalItemSpacing = 4.dp
     ) {
-        items(placeList) {
-            place -> PlaceCard(place = place)
+        items(images.size){
+            index-> ImageItem(images[index], description[index])
         }
     }
 }
 
 
-@Preview(name = "Phone", device = "spec:width=411dp,height=891dp,dpi=420", showBackground = true)
-@Preview(name = "Small", device = "spec:width=360dp,height=640dp,dpi=420", showBackground = true)
-@Preview(name = "Tablet", device = "spec:width=1280dp,height=800dp,dpi=240", showBackground = true)
-@Composable
-fun PreviewDifferentScreen() {
-    MaterialTheme {
-        PlaceGrid(placeList = DataSource().loadPlaces(), modifier = Modifier.width(100.dp))
-    }
-}
 
-@Preview(name = "Font 1.3x", fontScale = 1.3f, showBackground = true)
-@Composable
-fun PreviewFontScale() {
-    TutorialsTheme {
-        PlaceGrid(placeList = DataSource().loadPlaces(), modifier = Modifier.width(100.dp))
-    }
-}
 
 @Preview
 @Composable
-fun Preview() {
+fun StageredgridPreviewPreview() {
     TutorialsTheme {
-        PlaceGrid(placeList = DataSource().loadPlaces(), modifier = Modifier.width(320.dp))
+        StraggeredGrid()
     }
 }
 
-@Preview(
-    name = "Dark",
-    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_YES,
-    showBackground = true
-)
-@Composable
-fun PreviewDark() {
-    TutorialsTheme {
-        PlaceGrid(placeList = DataSource().loadPlaces())
-    }
-}
 
 
 

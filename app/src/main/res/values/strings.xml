@@ -1,47 +1,19 @@
 <resources>
     <string name="app_name">Places To Visit</string>
 
-    <string name="place1">CDMX</string>
-    <string name="place2">Cancún</string>
-    <string name="place3">Bangkok</string>
-    <string name="place4">Chiang Mai</string>
-    <string name="place5">Londres</string>
-    <string name="place6">Wiltshire</string>
-    <string name="place7">Tokio</string>
-    <string name="place8">Osaka</string>
-    <string name="place9">Lima</string>
-    <string name="place10">Machu Picchu</string>
+    <string name="butterfly">Butterfly</string>
+    <string name="cat">Cat</string>
+    <string name="crane">Crane</string>
+    <string name="dog">Dog</string>
+    <string name="elephant">elephant</string>
+    <string name="fish">fish</string>
+    <string name="fox">fox</string>
+    <string name="frog">frog</string>
+    <string name="horse">horse</string>
+    <string name="owl">owl</string>
+    <string name="rabbit">rabbit</string>
+    <string name="whale">whale</string>
     <!-- Climas -->
-    <string name="weather_cold">Frío</string>
-    <string name="weather_tempered">Templado</string>
-    <string name="weather_hot">Caliente</string>
-    <!-- Idiomas con banderas -->
-    <string name="lenguage_es">🇪🇸 Español</string>
-    <string name="lenguage_en">🇬🇧 Inglés</string>
-    <string name="lenguage_jp">🇯🇵 Japonés</string>
-    <string name="lenguage_th">🇹🇭 Tailandés</string>
-
-    <string name="country_mx">México</string>
-    <string name="country_jp">Japón</string>
-    <string name="country_th">Tailanda</string>
-    <string name="country_uk">Reino unido</string>
-    <string name="country_pe">Peru</string>
-
-
-    <string name="info">info</string>
-    <string name="favorite">favorite</string>
-
-    <!-- Descripciones -->
-    <string name="description1"> Ciudad de México es la densamente poblada capital de México que se encuentra a gran altura. Es famosa por su Templo Mayor (un templo azteca del siglo XIII), la Catedral Metropolitana de México, de estilo barroco, de los conquistadores españoles y el Palacio Nacional, que alberga murales históricos de Diego Rivera. Todos estos hitos se ubican en torno a la Plaza de la Constitución, la enorme plaza principal conocida también como el Zócalo.</string>
-    <string name="description2"> Cancún es una ciudad de México ubicada en la península de Yucatán que limita con el mar Caribe y que es conocida por sus playas, los numerosos centros turísticos y la vida nocturna. Se compone de 2 áreas distintas: el área del centro más tradicional y la Zona Hotelera, la franja costera con hoteles altos, clubes nocturnos, tiendas y restaurantes. Cancún también es un destino popular entre estudiantes durante el período de vacaciones universitarias en la primavera.</string>
-    <string name="description3"> Bangkok, la capital de Tailandia, es una extensa ciudad conocida por los santuarios ornamentados y la animada vida callejera. El río Chao Phraya, lleno de botes, alimenta su red de canales y pasa por el distrito real de Rattanakosin, donde se encuentra el Gran Palacio y su templo sagrado Wat Phra Kaew. Cerca de allí, se ubica el templo Wat Pho, con un enorme Buda inclinado y, en la orilla opuesta, el templo Wat Arun, con sus empinados escalones y su chapitel de estilo Khmer.</string>
-    <string name="description4"> Chiang Mai es una ciudad del norte montañoso de Tailandia. Se fundó en 1296 y fue la capital del Reino Independiente de Lanna hasta 1558. El área de la ciudad antigua conserva vestigios de murallas y fosos del período en que fue un centro cultural y religioso. También alberga cientos de elaborados templos budistas, incluido Wat Phra Singh, del siglo XIV, y Wat Chedi Luang, del siglo XV y adornado con serpientes talladas.</string>
-    <string name="description5"> Londres, la capital de Inglaterra y del Reino Unido, es una ciudad del siglo XXI con una historia que se remonta a la época romana. En su centro se alzan el imponente Palacio del Parlamento, la torre del icónico reloj “Big Ben” y la Abadía de Westminster, lugar de las coronaciones monárquicas británicas. Al otro lado del río Támesis, la rueda de observación London Eye ofrece vistas panorámicas del complejo cultural South Bank y de toda la ciudad.</string>
-    <string name="description6"> Wiltshire es uno de los cuarenta y siete condados de Inglaterra, Reino Unido, con capital en Trowbridge. Ubicado en la región Sudoeste limita al norte con Gloucestershire, al este con Oxfordshire y Berkshire, al sureste con Hampshire, al sur con Dorset y al oeste con Somerset.</string>
-    <string name="description7"> Tokio, la ajetreada capital de Japón, mezcla lo ultramoderno y lo tradicional, desde los rascacielos iluminados con neones hasta los templos históricos. El opulento santuario Shinto Meiji es conocido por su puerta altísima y los bosques circundantes. El Palacio Imperial se ubica en medio de grandes jardines públicos. Los distintos museos de la ciudad ofrecen exhibiciones que van desde el arte clásico (en el Museo Nacional de Tokio) hasta un teatro kabuki reconstruido (en el Museo Edo-Tokyo).</string>
-    <string name="description8"> Osaka es una gran ciudad portuaria y un centro comercial en la isla de Honshu de Japón. Es famosa por su moderna arquitectura, su vida nocturna y la abundante comida callejera. El castillo de Osaka del shogunato del siglo XVI, que ha sido restaurado varias veces, es un importante monumento histórico. Está rodeado de un foso y un parque con árboles de ciruelo, durazno y cerezo en flor. Sumiyoshi-taisha se encuentra entre los templos shinto más antiguos de Japón.</string>
-    <string name="description9"> Lima es la capital de Perú ubicada en la árida costa del Pacífico del país. Pese a que su centro colonial se conserva, es una desbordante metrópolis y una de las ciudades más grandes de Sudamérica. El Museo Larco alberga una colección de arte precolombino y el Museo de la Nación recorre la historia de las civilizaciones antiguas de Perú. La Plaza de Armas y la catedral del siglo XVI son el núcleo del antiguo centro de Lima.</string>
-    <string name="description10"> Machu Picchu es una ciudadela inca ubicada en las alturas de las montañas de los Andes en Perú, sobre el valle del río Urubamba. Se construyó en el siglo XV y luego fue abandonada, y es famosa por sus sofisticadas paredes de piedra seca que combinan enormes bloques sin el uso de un mortero, los edificios fascinantes que se relacionan con las alineaciones astronómicas y sus vistas panorámicas. El uso exacto que tuvo sigue siendo un misterio.</string>
 
 </resources>
 
