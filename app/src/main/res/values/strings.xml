@@ -1,19 +1,67 @@
 <resources>
     <string name="app_name">Places To Visit</string>
 
-    <string name="butterfly">Butterfly</string>
-    <string name="cat">Cat</string>
-    <string name="crane">Crane</string>
-    <string name="dog">Dog</string>
-    <string name="elephant">elephant</string>
-    <string name="fish">fish</string>
-    <string name="fox">fox</string>
-    <string name="frog">frog</string>
-    <string name="horse">horse</string>
-    <string name="owl">owl</string>
-    <string name="rabbit">rabbit</string>
-    <string name="whale">whale</string>
-    <!-- Climas -->
+    <string name="capilla_del_rosario">Capilla del Rosario</string>
+    <string name="museo_nacional_de_los_ferrocarriles_mexicanos">Museo Nacional de los Ferrocarriles Mexicanos</string>
+    <string name="casa_de_los_mu_ecos">Casa de los Muñecos</string>
+    <string name="casa_del_alfe_ique">Casa del Alfeñique</string>
+    <string name="convento_secreto_de_sana_m_nica">Convento Secreto de Sana Mónica</string>
+    <string name="fuertes_de_loreto">Fuertes de Loreto</string>
+    <string name="barrio_del_artista">Barrio del Artista</string>
+    <string name="mercado_el_pari_n">Mercado el Parián</string>
+    <string name="callej_n_de_los_sapos">Callejón de los Sapos</string>
+    <string name="catedral_de_puebla">Catedral de Puebla</string>
+    <string name="_9_00_am">9:00 am</string>
+    <string name="_9_15_am">9:15 am</string>
+    <string name="_9_30_am">9:30 am</string>
+    <string name="_9_45_am">9:45 am</string>
+
+    <string name="_10_00_am">10:00 am</string>
+    <string name="_10_15_am">10:15 am</string>
+    <string name="_10_30_am">10:30 am</string>
+    <string name="_10_45_am">10:45 am</string>
+
+    <string name="_11_00_am">11:00 am</string>
+    <string name="_11_15_am">11:15 am</string>
+    <string name="_11_30_am">11:30 am</string>
+    <string name="_11_45_am">11:45 am</string>
+
+    <string name="_12_00_pm">12:00 pm</string>
+    <string name="_12_15_pm">12:15 pm</string>
+    <string name="_12_30_pm">12:30 pm</string>
+    <string name="_12_45_pm">12:45 pm</string>
+
+    <string name="_1_00_pm">1:00 pm</string>
+    <string name="_1_15_pm">1:15 pm</string>
+    <string name="_1_30_pm">1:30 pm</string>
+    <string name="_1_45_pm">1:45 pm</string>
+
+    <string name="_2_00_pm">2:00 pm</string>
+    <string name="_2_15_pm">2:15 pm</string>
+    <string name="_2_30_pm">2:30 pm</string>
+    <string name="_2_45_pm">2:45 pm</string>
+
+    <string name="_3_00_pm">3:00 pm</string>
+    <string name="_3_15_pm">3:15 pm</string>
+    <string name="_3_30_pm">3:30 pm</string>
+    <string name="_3_45_pm">3:45 pm</string>
+
+    <string name="_4_00_pm">4:00 pm</string>
+    <string name="_4_15_pm">4:15 pm</string>
+    <string name="_4_30_pm">4:30 pm</string>
+    <string name="_4_45_pm">4:45 pm</string>
+
+    <string name="_5_00_pm">5:00 pm</string>
+    <string name="_5_15_pm">5:15 pm</string>
+    <string name="_5_30_pm">5:30 pm</string>
+    <string name="_5_45_pm">5:45 pm</string>
+
+    <string name="_6_00_pm">6:00 pm</string>
+    <string name="_6_15_pm">6:15 pm</string>
+    <string name="_6_30_pm">6:30 pm</string>
+    <string name="_6_45_pm">6:45 pm</string>
+
+    <string name="_7_00_pm">7:00 pm</string>
 
 </resources>
 
