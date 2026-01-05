@@ -1,7 +1,8 @@
+import com.android.tools.r8.internal.kt
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -37,6 +38,9 @@ android {
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
 }
 
 dependencies {
@@ -56,4 +60,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation("androidx.compose.ui:ui-tooling:1.6.4")
+    implementation("androidx.activity:activity-compose:1.4.0")
+    implementation("io.coil-kt:coil-compose:2.3.0")
 }
