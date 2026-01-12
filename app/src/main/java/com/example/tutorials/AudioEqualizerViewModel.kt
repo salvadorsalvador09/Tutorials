@@ -13,6 +13,7 @@ class AudioEqualizerViewModel : ViewModel() {
     private var equalizer: Equalizer? = null
     private var audioSessionId = 0
 
+    var visibleEqualizer = MutableStateFlow<Boolean>(true)
 
     init {
         if (audioEffects.value == null) {
@@ -42,5 +43,10 @@ class AudioEqualizerViewModel : ViewModel() {
                 list
             )
         )
+    }
+
+    fun setScreenOrientation(isFullScreen: Boolean)
+    {
+        visibleEqualizer.value = !isFullScreen
     }
 }

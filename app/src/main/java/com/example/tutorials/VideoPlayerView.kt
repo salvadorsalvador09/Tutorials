@@ -1,5 +1,7 @@
 package com.example.tutorials
 
+import android.app.Activity
+import android.content.pm.ActivityInfo
 import android.net.Uri
 import androidx.annotation.OptIn
 import androidx.compose.foundation.background
@@ -32,7 +34,7 @@ import androidx.media3.ui.PlayerView
 
 @OptIn(UnstableApi::class)
 @Composable
-fun VideoPlayerView(viewModel : AudioEqualizerViewModel) {
+fun VideoPlayerView(viewModel : AudioEqualizerViewModel, activity: MainActivity) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
 
@@ -64,6 +66,14 @@ fun VideoPlayerView(viewModel : AudioEqualizerViewModel) {
                     exoPlayer.repeatMode = Player.REPEAT_MODE_ONE
                     exoPlayer.playWhenReady = false
                     setFullscreenButtonClickListener{ isFullScreen ->
+                        viewModel.setScreenOrientation(isFullScreen)
+                        if (isFullScreen)
+                        {
+                            activity.setScreenOrientation(orientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+                        }else
+                        {
+                            activity.setScreenOrientation(orientation = ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT)
+                        }
 
                     }
                 }
