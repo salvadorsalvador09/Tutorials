@@ -24,6 +24,7 @@ class AudioEqualizerViewModel : ViewModel() {
     fun onStart(sessionId: Int) {
         audioSessionId = sessionId
         equalizer = Equalizer(Int.MAX_VALUE, audioSessionId)
+        equalizer?.enabled= true
         audioEffects.value?.gainValue?.forEachIndexed { index, value ->
             val bandLevel = (value * 1000).toInt().toShort()
             equalizer?.setBandLevel(index.toShort(), bandLevel)
