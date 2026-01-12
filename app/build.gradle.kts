@@ -10,8 +10,8 @@ android {
 
     defaultConfig {
         applicationId = "com.example.tutorials"
-        minSdk = 24
-        targetSdk = 35
+        minSdk = 25
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -56,4 +56,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.compose.material)
+
 }
