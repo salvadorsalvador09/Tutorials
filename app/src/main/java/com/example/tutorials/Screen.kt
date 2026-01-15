@@ -19,4 +19,17 @@ sealed class Screen {
     data object TransformationScreen : Screen() {
         val route = "transformation_screen"
     }
+    data object HorizontalScrollScreen : Screen() {
+        val route = "horizontal_scroll_screen"
+    }
+    data object VerticalScrollScreen : Screen() {
+        val route = "vertical_scroll_screen"
+    }
+    data object ScrollableScreen : Screen() {
+        val route = "scrollable_screen"
+    }
+    data object NestedScrollScreen : Screen() {
+        val route = "nested_scroll_screen"
+    }
+
 }

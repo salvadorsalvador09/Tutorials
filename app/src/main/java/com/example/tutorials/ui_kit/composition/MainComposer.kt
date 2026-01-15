@@ -28,7 +28,11 @@ import com.example.tutorials.ui_kit.components.DraggableExample
 import com.example.tutorials.ui_kit.components.RotationExample
 import com.example.tutorials.ui_kit.components.CombinedClickableExample
 import com.example.tutorials.ui_kit.components.DraggableFullExample
+import com.example.tutorials.ui_kit.components.HorizontalScrollExample
+import com.example.tutorials.ui_kit.components.NestedScrollEcample
+import com.example.tutorials.ui_kit.components.ScrollableExample
 import com.example.tutorials.ui_kit.components.TransformationExample
+import com.example.tutorials.ui_kit.components.VerticalScrollExample
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalFoundationApi::class)
@@ -64,6 +68,18 @@ fun MainComposer() {
                 composable (Screen.TransformationScreen.route){
                     TransformationExample()
                 }
+                composable (Screen.HorizontalScrollScreen.route){
+                    HorizontalScrollExample()
+                }
+                composable (Screen.VerticalScrollScreen.route){
+                    VerticalScrollExample()
+                }
+                composable (Screen.ScrollableScreen.route){
+                    ScrollableExample()
+                }
+                composable (Screen.NestedScrollScreen.route){
+                    NestedScrollEcample()
+                }
             }
         }
     )
@@ -81,7 +97,12 @@ fun ExpandableMenuList(
         Screen.RotationScreen.route,
         Screen.CombinedClickableScreen.route,
         Screen.DraggableFullScreen.route,
-        Screen.TransformationScreen.route
+        Screen.TransformationScreen.route,
+        Screen.HorizontalScrollScreen.route,
+        Screen.VerticalScrollScreen.route,
+        Screen.ScrollableScreen.route,
+        Screen.NestedScrollScreen.route,
+
 
     )
     Column(
