@@ -26,6 +26,9 @@ import com.example.tutorials.Screen
 import com.example.tutorials.ui_kit.components.ClickableExample
 import com.example.tutorials.ui_kit.components.DraggableExample
 import com.example.tutorials.ui_kit.components.RotationExample
+import com.example.tutorials.ui_kit.components.CombinedClickableExample
+import com.example.tutorials.ui_kit.components.DraggableFullExample
+import com.example.tutorials.ui_kit.components.TransformationExample
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalFoundationApi::class)
@@ -52,6 +55,15 @@ fun MainComposer() {
                 composable (Screen.RotationScreen.route){
                     RotationExample()
                 }
+                composable (Screen.CombinedClickableScreen.route){
+                    CombinedClickableExample()
+                }
+                composable (Screen.DraggableFullScreen.route){
+                    DraggableFullExample()
+                }
+                composable (Screen.TransformationScreen.route){
+                    TransformationExample()
+                }
             }
         }
     )
@@ -66,7 +78,11 @@ fun ExpandableMenuList(
     val subMenu = listOf(
         Screen.ClickableScreen.route,
         Screen.DraggableScreen.route,
-        Screen.RotationScreen.route
+        Screen.RotationScreen.route,
+        Screen.CombinedClickableScreen.route,
+        Screen.DraggableFullScreen.route,
+        Screen.TransformationScreen.route
+
     )
     Column(
         modifier = Modifier
