@@ -50,7 +50,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(
-                            WindowInsets.systemBars
+                            WindowInsets
+                                .systemBars
                                 .asPaddingValues())
                 )
             }
@@ -81,7 +82,8 @@ fun PetList(
 }
 
 @Composable
-fun PetCard(pet: Pet, modifier: Modifier = Modifier) {
+fun PetCard(pet: Pet,
+            modifier: Modifier = Modifier) {
     Card(
         modifier = modifier.fillMaxWidth(),
         elevation = CardDefaults.cardElevation(1.dp),
