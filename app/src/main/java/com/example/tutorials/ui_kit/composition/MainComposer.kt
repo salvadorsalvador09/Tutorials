@@ -1,7 +1,6 @@
 package com.example.tutorials.ui_kit.composition
 
 import android.annotation.SuppressLint
-import android.view.SubMenu
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -29,7 +28,7 @@ import com.example.tutorials.ui_kit.components.RotationExample
 import com.example.tutorials.ui_kit.components.CombinedClickableExample
 import com.example.tutorials.ui_kit.components.DraggableFullExample
 import com.example.tutorials.ui_kit.components.HorizontalScrollExample
-import com.example.tutorials.ui_kit.components.NestedScrollEcample
+import com.example.tutorials.ui_kit.components.NestedScrollExample
 import com.example.tutorials.ui_kit.components.ScrollableExample
 import com.example.tutorials.ui_kit.components.TransformationExample
 import com.example.tutorials.ui_kit.components.VerticalScrollExample
@@ -78,7 +77,10 @@ fun MainComposer() {
                     ScrollableExample()
                 }
                 composable (Screen.NestedScrollScreen.route){
-                    NestedScrollEcample()
+                    NestedScrollExample()
+                }
+                composable (Screen.SwipeableExample.route){
+                    NestedScrollExample()
                 }
             }
         }
@@ -102,6 +104,7 @@ fun ExpandableMenuList(
         Screen.VerticalScrollScreen.route,
         Screen.ScrollableScreen.route,
         Screen.NestedScrollScreen.route,
+        Screen.SwipeableExample.route
 
 
     )

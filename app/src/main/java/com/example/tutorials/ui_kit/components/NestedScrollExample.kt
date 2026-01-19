@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun NestedScrollEcample(){
+fun NestedScrollExample(){
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center

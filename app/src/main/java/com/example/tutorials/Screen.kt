@@ -31,5 +31,7 @@ sealed class Screen {
     data object NestedScrollScreen : Screen() {
         val route = "nested_scroll_screen"
     }
-
+    data object SwipeableExample : Screen() {
+        val route = "nested_swipeable_screen"
+    }
 }
