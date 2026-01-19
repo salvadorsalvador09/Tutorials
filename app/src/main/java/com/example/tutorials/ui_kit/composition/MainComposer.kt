@@ -29,8 +29,9 @@ import com.example.tutorials.ui_kit.components.RotationExample
 import com.example.tutorials.ui_kit.components.CombinedClickableExample
 import com.example.tutorials.ui_kit.components.DraggableFullExample
 import com.example.tutorials.ui_kit.components.HorizontalScrollExample
-import com.example.tutorials.ui_kit.components.NestedScrollEcample
+import com.example.tutorials.ui_kit.components.NestedScrollExample
 import com.example.tutorials.ui_kit.components.ScrollableExample
+import com.example.tutorials.ui_kit.components.SwipeableExample
 import com.example.tutorials.ui_kit.components.TransformationExample
 import com.example.tutorials.ui_kit.components.VerticalScrollExample
 
@@ -78,7 +79,10 @@ fun MainComposer() {
                     ScrollableExample()
                 }
                 composable (Screen.NestedScrollScreen.route){
-                    NestedScrollEcample()
+                    NestedScrollExample()
+                }
+                composable (Screen.SwipeableScreen.route){
+                    SwipeableExample()
                 }
             }
         }
@@ -102,7 +106,7 @@ fun ExpandableMenuList(
         Screen.VerticalScrollScreen.route,
         Screen.ScrollableScreen.route,
         Screen.NestedScrollScreen.route,
-
+        Screen.SwipeableScreen.route
 
     )
     Column(

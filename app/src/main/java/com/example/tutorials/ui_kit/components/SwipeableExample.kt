@@ -30,7 +30,7 @@ fun SwipeableExample(){
 
     val anchors =
         mapOf(
-            0f to "facil",
+            0f to "Facil",
             sizePx to "Normal",
             sizePx * 2 to "Dificil",
             sizePx * 3 to "Demente"
